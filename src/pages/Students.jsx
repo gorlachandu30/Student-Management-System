@@ -1,81 +1,130 @@
 import StudentCard from "../components/StudentCard";
 import { useStudents } from "../context/StudentContext";
-
 function Students() {
     const { students, deleteStudent } = useStudents();
-
-    // Aesthetic Sky Blue Theme Styles (Solid colors, zero lines)
     const pageStyle = {
         minHeight: "100vh",
-        backgroundColor: "#c1d9f4", // Soft, calming aesthetic sky blue tint
-        padding: "40px 20px",
-        fontFamily: "'Inter', system-ui, -apple-system, sans-serif"
+        padding: "45px 20px",
+        fontFamily: "Arial, sans-serif",
+
+        backgroundImage:
+            "url('https://i.postimg.cc/2jxFLCNy/Chat-GPT-Image-Oct-4-2026-04-51-12-PM.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+
+        animation: "backgroundZoom 15s ease-in-out infinite alternate"
     };
 
     const headerStyle = {
         textAlign: "center",
-        color: "#1e3a8a", // Deep royal blue for strong, elegant contrast
-        margin: "0 0 8px 0",
-        fontSize: "2.4rem",
-        fontWeight: "600",
-        letterSpacing: "-0.02em"
+        color: "white",
+        fontSize: "2.7rem",
+        fontWeight: "bold",
+        margin: "0 0 10px",
+        textShadow: "2px 3px 8px rgba(0,0,0,0.7)"
     };
 
     const countStyle = {
         textAlign: "center",
-        color: "#475569", // Smooth slate-gray for text hierarchy
-        fontSize: "1.05rem",
-        margin: "0 0 32px 0"
+        color: "white",
+        fontSize: "1.1rem",
+        marginBottom: "35px",
+        textShadow: "1px 2px 5px rgba(0,0,0,0.7)"
     };
 
     const badgeStyle = {
-        backgroundColor: "#e0f2fe", // Pastel sky blue accent pill box
-        color: "#0369a1", // Rich ocean blue text color
-        padding: "4px 12px",
+        background: "rgba(255,255,255,0.85)",
+        color: "#24558c",
+        padding: "6px 15px",
         borderRadius: "20px",
-        fontWeight: "600",
-        fontSize: "0.95rem",
-        marginLeft: "6px"
+        fontWeight: "bold",
+        marginLeft: "8px",
+        boxShadow: "0 3px 10px rgba(0,0,0,0.15)"
     };
 
-    // Clean top-to-bottom stack layout
-    const verticalListStyle = {
+    const listStyle = {
         display: "flex",
-        flexDirection: "column",  // Forces items to stack straight down
-        gap: "18px",              // Balanced space between cards
-        maxWidth: "680px",        // Elegant, focused content width layout
-        margin: "0 auto"          // Centers the whole stack horizontally
+        flexDirection: "column",
+        gap: "22px",
+        maxWidth: "760px",
+        margin: "0 auto"
+    };
+
+    const cardStyle = {
+        background: "rgba(255, 255, 255, 0.72)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderRadius: "22px",
+        padding: "20px",
+        boxShadow: "0 8px 30px rgba(0,0,0,0.18)",
+        border: "1px solid rgba(255,255,255,0.6)"
     };
 
     const emptyStyle = {
         textAlign: "center",
-        color: "#64748b",
-        marginTop: "40px",
-        fontSize: "1.1rem"
+        color: "white",
+        fontSize: "1.1rem",
+        textShadow: "1px 2px 5px black"
     };
 
     return (
         <div style={pageStyle}>
-            <h1 style={headerStyle}>Students</h1>
+
+            <h1 style={headerStyle}>
+                Students
+            </h1>
+
             <p style={countStyle}>
-                Total Students: <span style={badgeStyle}>{students.length}</span>
+                Total Students:
+                <span style={badgeStyle}>
+                    {students.length}
+                </span>
             </p>
-            
+
             {students.length === 0 ? (
-                <p style={emptyStyle}>No students available.</p>
+                <p style={emptyStyle}>
+                    No students available.
+                </p>
             ) : (
-                <div style={verticalListStyle}>
+                <div style={listStyle}>
+
                     {students.map((student) => (
-                        <StudentCard
+                        <div
                             key={student.id}
-                            student={student}
-                            onDelete={deleteStudent}
-                        />
+                            style={cardStyle}
+                        >
+                            <StudentCard
+                                student={student}
+                                onDelete={deleteStudent}
+                            />
+                        </div>
                     ))}
+
                 </div>
             )}
+
+            <style>
+                {`
+                    @keyframes backgroundZoom {
+                        0% {
+                            background-size: 100%;
+                            background-position: center;
+                        }
+
+                        50% {
+                            background-position: 52% center;
+                        }
+
+                        100% {
+                            background-size: 110%;
+                            background-position: 48% center;
+                        }
+                    }
+                `}
+            </style>
+
         </div>
     );
 }
-
 export default Students;

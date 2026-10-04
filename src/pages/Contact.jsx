@@ -1,32 +1,44 @@
 function Contact() {
+    const style = {
+        minHeight: "100vh",
+        textAlign: "center",
+        paddingTop: "100px",
+        backgroundImage:
+            "url('https://i.postimg.cc/d0xCPLFv/Chat-GPT-Image-Oct-4-2026-02-55-29-PM.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        animation: "move 10s infinite alternate"
+    };
+
     return (
-        <div style={styles.container}>
-            <h1 style={styles.title}>Contact</h1>
-            <p style={styles.text}>Contact: Chandu</p>
-            <p style={styles.text}>Phone: 9963256664</p>
+        <div style={style}>
+            <h1>Contact</h1>
+
+            <p>Contact: Chandu</p>
+            <p>Phone: 9963256664</p>
+
+            <style>
+                {`
+                    @keyframes move {
+                        from {
+                            background-position: left center;
+                        }
+                        to {
+                            background-position: right center;
+                        }
+                    }
+
+                    h1, p {
+                        background: rgba(255,255,255,0.8);
+                        padding: 10px;
+                        width: fit-content;
+                        margin: 15px auto;
+                        border-radius: 10px;
+                    }
+                `}
+            </style>
         </div>
     );
 }
-
-const styles = {
-    container: {
-        height: "80vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        background: "linear-gradient(135deg, #74ebd5, #ACB6E5)",
-        color: "#333",
-    },
-    title: {
-        fontSize: "28px",
-        marginBottom: "10px",
-    },
-    text: {
-        fontSize: "16px",
-        margin: "4px 0",
-    },
-};
 
 export default Contact;

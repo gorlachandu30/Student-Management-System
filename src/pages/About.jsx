@@ -1,27 +1,23 @@
 function About() {
-    const containerStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh', 
-        textAlign: 'top',
-        padding: '20px',
-        background: 'linear-gradient(135deg, #FFDEE9, #B5FFFC)'
-    };
-
-    const headingStyle = {
-        color: '#000000',     // Keeps the headline strictly black
-        marginBottom: '40px' // Creates distance between headline and paragraph
+    const style = {
+        minHeight: "100vh",
+        padding: "50px",
+        textAlign: "center",
+        backgroundImage: "url('https://i.postimg.cc/zB7kgJZx/Chat-GPT-Image-Oct-4-2026-02-49-35-PM.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        animation: "move 10s infinite alternate"
     };
 
     return (
-        <div style={containerStyle}>
-            <h1 style={headingStyle}>About CSC</h1>
+        <div style={style}>
+            <h1>About CSM-A</h1>
+
             <p>
                 CSC students are intelligent,
                 hardworking and enthusiastic learners.
             </p>
+
             <p>
                 This application is created to manage
                 student information.
